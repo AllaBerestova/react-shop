@@ -1,0 +1,429 @@
+.shop{
+    display: flex;
+    gap: 50px;
+}
+
+.sidebar{
+    max-width: 244px;
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+}
+
+.search{
+    position: relative;
+}
+
+.search-row{
+    padding: 0 20px 15px 0;
+    
+}
+
+.search-icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.sidebar-item{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-title{
+    font-family: Josefin Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    border-bottom: 2px solid rgb(0, 0, 0, 1);
+    padding-bottom: 14px;
+}
+
+.sidebar-content .custom-list{
+    margin: 0 0 0 20px;
+}
+
+.price-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.colors{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 0 0 20px;
+}
+
+.color .color-checkbox{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.color .color-checkbox+.color-name{
+    display: inline-flex;
+    align-items: center;
+    user-select: none; 
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.color .color-checkbox+.color-name::before{
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid rgba(238, 238, 238, 1);
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-sizing: border-box;
+}
+
+.color .color-checkbox:checked+.color-name{
+    color: rgba(255, 142, 142, 1);
+}
+
+.color .color-checkbox:checked+.color-name::before{
+    background-image: url(/public/images/check-pink.svg);
+}
+
+.reviewed-products{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviewed-products .product{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.image{
+    width: 75px;
+    height: 85px;
+    background: rgba(241, 242, 243, 1);
+}
+
+.info{
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #444444;
+}
+
+.info .price{
+    gap: 10px;
+}
+
+.reviewed-products .product .info .price .current-price{
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.reviewed-products .product .info .price .old-price{
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.products-wrapper{
+    max-width: 846px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sort-and-count{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.products-count{
+    width: 100%;
+}
+
+.bold{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+}
+
+.sort{
+    width: 262px;
+    width: 100%;
+}
+
+.sort .input{
+    color: rgba(0, 0, 0, 1);
+}
+
+.products-wrapper .products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px 30px;
+}
+
+.products-wrapper .products .product{
+    max-width: 262px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.photo{
+    height: 360px;                                    /* TODO: брать жесткую величину */
+    background: #F1F2F3;
+    position: relative;
+}
+
+.top-bar{
+    position: absolute;
+    top: 15px;
+    left: 22px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 222px;
+}
+
+.labels{
+    display: flex;
+    gap: 15px;
+}
+
+.label{
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 10px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: rgba(255, 142, 142, 1);
+}
+
+.label.new{
+    background: rgba(149, 204, 181, 1);
+}
+
+.product-image{
+    width: 100%;
+}
+
+.products-wrapper .products .product .info{
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.products-wrapper .products .product .info .name{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.pagination{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.pagination.hide{
+    display: none;
+}
+
+.pages{
+    display: flex;
+    gap: 20px; 
+}
+
+.page{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+    height: 25px;
+    opacity: 0.5;
+    width: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.page.active{
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    width: 22px;
+    text-align: center;
+}
+
+.button-left{
+    cursor: pointer;
+}
+
+.button-right{
+    cursor: pointer;
+}
+
+.cap{
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.cap-menu{
+    align-items: center;
+    justify-content: center;
+    max-width: 850px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.cap-menu .point{
+    position: absolute;
+    left: 0;
+    top: 32px;
+}
+
+.menu-items{
+    display: flex;
+    gap: 21px;
+    flex-direction: column;
+    margin-left: -10px;
+}
+
+.horizontal-line{
+    height: 2px;
+    background: black;
+    width: 850px;
+    position: absolute;
+    left: -60px;
+    bottom: 110px;
+}
+
+.cap-photo{
+    width: 800px;
+    height: 400px;
+    background: rgba(241, 242, 243, 1);
+    margin-right: 60px;
+}
+
+.cap-title{
+    font-family: Josefin Sans;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 80px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.cap-items{
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.cap-item{
+    cursor: pointer;
+}
+
+.cap-items .vertical-line{
+    width: 2px;
+    background: rgba(0, 0, 0, 1);
+}
+
+.cap-item.active,
+.cap .cap-menu .menu-items .cap-items .cap-item:hover{
+    color: rgba(255, 142, 142, 1);
+}
+
+.container.news{
+    max-width: 1680px;
+    margin: 200px auto 0;
+}
+
+.container .container-newsletter{
+    background: rgba(241, 242, 243, 1);
+    padding: 0 781px 162px 275px;
+}
+
+
+.newsletter{
+    max-width: 624px;
+    background: rgba(255, 255, 255, 1); 
+    position: relative;
+}
+
+.newsletter .point{
+    position: absolute;
+    top: -30px;
+    right: 30px;
+}
+
+.newsletter-info{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 60px;
+}
+
+.newsletter-title{
+    font-family: Josefin Sans;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.newsletter-text{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+}
+
+.send-email{
+    display: flex;
+    gap: 4px;
+    margin-top: 24px;
+}
+.send-email .button-wrapper{
+    max-width: 140px;
+    width: 100%;
+}
+ .send-email .button-wrapper .button{
+    padding: 17px 30px;
+}
+
+.send-email .input{
+    max-width: 360px;
+    width: 100%;
+}
