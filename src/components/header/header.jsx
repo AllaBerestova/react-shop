@@ -1,9 +1,12 @@
-import React from "react";
+import React from "react"
+import { useProducts } from "../../context/products"
 import './header.css'
-import './commons.css'
+import '../commons.css'
 
 
-const HeaderContainer = () => {
+const Header = ({toggleCart}) => {
+    const {basketCount, favoriteCount} = useProducts()
+    
     return (
         <div className="container">
             <header className="header">
@@ -49,17 +52,18 @@ const HeaderContainer = () => {
                     <div className="header-icon">
                         <img src="./images/iconFavorites.svg" alt="" />
                         <div className="counter js-favorite-counter">
-                            <span>0</span>
+                            <span>{favoriteCount}</span>
                         </div>
                     </div>
-                    <div className="header-icon">
+                    <div className="header-icon" onClick={toggleCart}>
                         <img src="./images/iconCart.svg" alt="" />
-                        <div className="counter js-basket-counter">0</div>
+                        <div className="counter">{basketCount}</div>
                     </div>
+                    
                 </div>
             </header>
         </div>
     )
 }
 
-export default HeaderContainer
+export default Header

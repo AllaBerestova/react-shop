@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react"
+import { useProducts } from "../context/products"
 
 //ключ для избранного:
 const PRODUCT_IN_FAVORITE_KEY = 'product-in-favorite'  
 
-
+//ключ для корзины:
 const PRODUCT_IN_BASKET_KEY = 'product-in-basket'
 
 const getFromLS = (key) => {
@@ -25,77 +26,59 @@ const setToLS = (key, value) => {
   }
 }
 
-{/*const updateHeaderInfoFavorite = () => {
-   
-  //const FavoriteCounter = document.getElementsByClassName('js-favorite-counter')
 
-  if (!FavoriteCounter.length){
-    return false
-  }
+const Product = ({ product }) => {
+  const [isFavorite, setIsFavorite] = useState(false)  //состояние для избранного
+  const { setBasketCount, setFavoriteCount } = useProducts()
 
-  const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY)
-
-  if (!productsInFavorite) {
-    return false
-  }
-
-  let countInFavoite = 0
-  
-  productsInFavorite.forEach((product) => {
-    countInFavoite += product.quantity
-  })
-
-  FavoriteCounter[0].innerHTML = countInFavoite
-}*/}
-
-//добавляем в корзину:
-const buyProduct = (product) => {
-  const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY)  
-  if (!productsInBasket) {                                    
-    setToLS(PRODUCT_IN_BASKET_KEY, [{...product, quantity: 1}])  
-    //updateHeaderInfo()  
-    return true
-  }
-
-  let hasProductInBasket = false                       
-  const updateProducts = productsInBasket.map((productInBasket) => {
-    if (productInBasket.id === product.id) {                
-      hasProductInBasket = true
-
-      return {                                             
-        ...productInBasket,
-        quantity: productInBasket.quantity + 1
-      }
+  //добавляем в корзину:
+  const buyProduct = (product) => {
+    const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY)  
+    if (!productsInBasket) {                                    
+      setToLS(PRODUCT_IN_BASKET_KEY, [{...product, quantity: 1}])
+      setBasketCount(prevCount => prevCount + 1)
+      return true
     }
-
-    return productInBasket
-  })
-
-  if (hasProductInBasket) {                      
-    setToLS(PRODUCT_IN_BASKET_KEY, updateProducts) 
-    //updateHeaderInfo()
-    return true
+  
+    let hasProductInBasket = false                       
+    const updateProducts = productsInBasket.map((productInBasket) => {
+      if (productInBasket.id === product.id) {                
+        hasProductInBasket = true
+  
+        return {                                             
+          ...productInBasket,
+          quantity: productInBasket.quantity + 1
+        }
+      }
+  
+      return productInBasket
+    })
+  
+    if (hasProductInBasket) {                      
+      setToLS(PRODUCT_IN_BASKET_KEY, updateProducts) 
+      setBasketCount(prevCount => prevCount + 1)
+      return true
+    }
+  
+    productsInBasket.push({...product, quantity: 1})  
+    setToLS(PRODUCT_IN_BASKET_KEY, productsInBasket)  
+    setBasketCount(prevCount => prevCount + 1)
   }
 
-  productsInBasket.push({...product, quantity: 1})  
-  setToLS(PRODUCT_IN_BASKET_KEY, productsInBasket)  
-  //updateHeaderInfo()
-}
-
-//добавляем в избранное:
+  //добавляем в избранное:
 const addToFavorites = (product) => {
   const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY)
   
   
   if (!productsInFavorite) {
     setToLS(PRODUCT_IN_FAVORITE_KEY, [{...product, quantity: 1}])
-    //updateHeaderInfoFavorite()
+    setFavoriteCount(prevCount => prevCount + 1)
     return true
   }
 
   productsInFavorite.push({...product, quantity: 1})
   setToLS(PRODUCT_IN_FAVORITE_KEY, productsInFavorite)
-  //updateHeaderInfoFavorite()
+  setFavoriteCount(prevCount => prevCount + 1)
 }
 
 //удаляем из избранного:
@@ -108,13 +91,9 @@ const removeFromFavorites = (product) => {
 
   const deleteFavorite = productsInFavoriteDelete.filter(item => (item.id !== product.id))
   setToLS(PRODUCT_IN_FAVORITE_KEY, deleteFavorite)
-  //updateHeaderInfoFavorite()
+  setFavoriteCount(prevCount => prevCount - 1)
   
 }
-
-const Product = ({ product }) => {
-  const [isFavorite, setIsFavorite] = useState(false)  //состояние для избранного
-  
 
   useEffect(() => {
     const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY) || [];   

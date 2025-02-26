@@ -1,31 +1,11 @@
 import React from "react";
 import './shop.css'
-import Product from './products'
-import productsData from '../products.json'
+import Product from '../products'
+import productsData from '../../products.json'
 
 
 const Shop = () => {
     return(
-        <div>
-            <div className="container">
-                <div className="cap">
-                    <div className="cap-menu">
-                        <div className="horizontal-line"></div>
-                        <div className="point">
-                            <img src="./images/point.svg" alt="point" />
-                        </div>
-                        <div className="menu-items">
-                            <div className="cap-title">Shop</div>
-                            <div className="cap-items">
-                                <div className="vertical-line"></div>
-                                <div className="cap-item">Home</div>
-                                <div className="cap-item active">Shop</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="cap-photo"></div>
-                </div>
-            </div>
             <div className="container mw-1140">
                 <div className="shop">
                     <div className="sidebar">
@@ -162,27 +142,6 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-            <div className="container news">
-                <div className="container-newsletter">
-                    <div className="newsletter">
-                        <div className="point">
-                            <img src="./images/point-mini.svg" alt="point" />
-                        </div>
-                        <div className="newsletter-info">
-                            <div className="newsletter-title">Newsletter</div>
-                            <div className="newsletter-text">Be the first to hear about deals, offers and upcoming collections.</div>
-                            <div className="send-email">
-                                <input type="text" placeholder="Enter your email" className="input" />
-                                <div className="button-wrapper">
-                                    <button className="button">Subscribe</button>
-                                    <div className="vertical-line"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     )
 }
 

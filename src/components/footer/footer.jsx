@@ -1,10 +1,10 @@
 import React from "react"
 import './footer.css'
-import './commons.css'
+import '../commons.css'
 
 
 
-const FooterContainer = () => {
+const Footer = () => {
     return (
         <footer className="footer">
             <div className="container">
@@ -106,4 +106,4 @@ const FooterContainer = () => {
         </footer>
     )
 }
-export default FooterContainer
+export default Footer
