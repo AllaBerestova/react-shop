@@ -10,26 +10,27 @@ import './App.css';
 
 
 function App() {
-  const [cartOpen, setCartOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState('shop')
 
   const toggleCart = () => {
-    setCartOpen(!cartOpen)
+    setCurrentPage('cart')
+  }
+  const toggleShop = () => {
+    setCurrentPage('shop')
   }
 
   return (
     <div className="App">
       <ProductsProvider>
-        <Header toggleCart={toggleCart}/>
-        <Cap/>
-        {cartOpen ? (
-          <Cart/>
-        ):
-        (
+        <Header toggleCart={toggleCart} toggleShop={toggleShop}/>
+        <Cap currentPage={currentPage}/>
+        {currentPage === 'shop' && (
           <>
-        <Shop/>
-          <Newsletter/>
-          </>)}
-        
+          <Shop />
+          <Newsletter />
+          </>
+        )}
+        {currentPage === 'cart' && <Cart />}
         <Footer/>
       </ProductsProvider>  
     </div>

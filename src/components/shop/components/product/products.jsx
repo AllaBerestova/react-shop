@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import { useProducts } from "../context/products"
+import { useProducts } from "../../../../context/products"
 
 //ключ для избранного:
 const PRODUCT_IN_FAVORITE_KEY = 'product-in-favorite'  
@@ -121,7 +121,7 @@ const removeFromFavorites = (product) => {
             {product.isNew && <div className="label new">New</div>}
           </div>
           <div className="favorites" onClick={toggleFavorite}>
-            <img
+            <img 
               src={isFavorite ? './images/iconHeart.svg' : './images/iconFavorites.svg'}
               alt="Favorite Icon"
             />

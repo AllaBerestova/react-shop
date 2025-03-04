@@ -4,7 +4,7 @@ import './header.css'
 import '../commons.css'
 
 
-const Header = ({toggleCart}) => {
+const Header = ({toggleCart, toggleShop}) => {
     const {basketCount, favoriteCount} = useProducts()
     
     return (
@@ -30,7 +30,7 @@ const Header = ({toggleCart}) => {
                             <img src="./images/arrowPink.svg" alt="" className="arrow-hover" />
                         </div>
                         <div className="menu-item active">
-                            <span>Shop</span>
+                            <span onClick={toggleShop}>Shop</span>
                             <img src="./images/arrow.svg" alt="" className="arrow-default" />
                             <img src="./images/arrowPink.svg" alt="" className="arrow-hover" />
                         </div>
@@ -50,13 +50,13 @@ const Header = ({toggleCart}) => {
                         <img src="./images/iconProfile.svg" alt="" />
                     </div>
                     <div className="header-icon">
-                        <img src="./images/iconFavorites.svg" alt="" />
+                        <img src="./images/iconFavorites.svg" alt=""/>
                         <div className="counter js-favorite-counter">
                             <span>{favoriteCount}</span>
                         </div>
                     </div>
                     <div className="header-icon" onClick={toggleCart}>
-                        <img src="./images/iconCart.svg" alt="" />
+                        <img src="./images/iconCart.svg" alt=""/>
                         <div className="counter">{basketCount}</div>
                     </div>
                     
