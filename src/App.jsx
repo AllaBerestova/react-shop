@@ -12,17 +12,12 @@ import './App.css';
 function App() {
   const [currentPage, setCurrentPage] = useState('shop')
 
-  const toggleCart = () => {
-    setCurrentPage('cart')
-  }
-  const toggleShop = () => {
-    setCurrentPage('shop')
-  }
+  const togglePage = (page) => setCurrentPage(page)
 
   return (
     <div className="App">
       <ProductsProvider>
-        <Header toggleCart={toggleCart} toggleShop={toggleShop}/>
+        <Header togglePage={togglePage}/>
         <Cap currentPage={currentPage}/>
         {currentPage === 'shop' && (
           <>
