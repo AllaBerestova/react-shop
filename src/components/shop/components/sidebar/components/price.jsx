@@ -1,15 +1,19 @@
 import React, {useState} from "react";
 
-export const Price = () => {
+export const Price = ({onMinPrice, onMaxPrice}) => {
     const [minPrice, setMinPrice] = useState(0)
-    const [maxPrice, setMaxPrice] = useState(0)
+    const [maxPrice, setMaxPrice] = useState(999999)
 
     const changeMinPrice = (e) => {
-        setMinPrice(e.target.value)
+        const valueMin = Number(e.target.value)
+        setMinPrice(valueMin)
+        onMinPrice(valueMin, maxPrice)
     }
 
     const changeMaxPrice = (e) => {
-        setMaxPrice(e.target.value)
+        const valueMax = Number(e.target.value)
+        setMaxPrice(valueMax)
+        onMaxPrice(minPrice, valueMax)
     }
 
     return <>

@@ -51,6 +51,9 @@
     justify-content: space-between;
     gap: 15px;
 }
+.price-red{
+    border-radius: 1px solid red;
+}
 
 .colors{
     display: flex;
@@ -108,8 +111,8 @@
     align-items: center;
 }
 
-.image{
-    width: 75px;
+.image img{
+    max-width: 75px;
     height: 85px;
     background: rgba(241, 242, 243, 1);
 }

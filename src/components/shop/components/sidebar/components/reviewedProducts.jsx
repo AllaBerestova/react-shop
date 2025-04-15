@@ -1,40 +1,35 @@
 import React from "react";
 
-export const ReviewedProducts = () => {
+export const ReviewedProducts = ({products}) => {
+
+    let randomThreeProducts = [...products]
+
+    const getRandomProducts = (randomThreeProducts) => {
+        const shuffled = randomThreeProducts.sort(() => 0.5 - Math.random())
+        return shuffled.slice(0, 3)
+    }
+    const randomProducts = getRandomProducts(randomThreeProducts)
+
     return <>
         <div className="sidebar-title">Reviewed by you</div>
         <div className="sidebar-content">
-            <div className="reviewed-products js-reviewed-products">
-                <div className="product">
-                    <div className="image"></div>
-                    <div className="info">
-                        <div className="name">Retro style handbag</div>
-                        <div className="price">
-                            <div className="current-price">$35.99</div>
-                            <div className="old-price">$52.99</div>
+            <div className="reviewed-products">
+                {randomProducts.map((product) => (
+                    <div className="product" key={product.id}>
+                        <div className="image">
+                            <img src={product.image} alt={product.name} />
+                        </div>
+                        <div className="info">
+                            <div className="name">{product.name}</div>
+                            <div className="price">
+                                <div className="current-price">${product.price}</div>
+                                {product.oldPrice && (
+                                    <div className="old-price">${product.oldPrice}</div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="product">
-                    <div className="image"></div>
-                    <div className="info">
-                        <div className="name">Warm casual sweater</div>
-                        <div className="price">
-                            <div className="current-price">$35.99</div>
-                            <div className="old-price">$52.99</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="product">
-                    <div className="image"></div>
-                    <div className="info">
-                        <div className="name">Textured turtleneck with zip</div>
-                        <div className="price">
-                            <div className="current-price">$35.99</div>
-                            <div className="old-price">$52.99</div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     </>

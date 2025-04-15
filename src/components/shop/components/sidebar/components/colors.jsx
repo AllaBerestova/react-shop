@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export const Colors = () => {
+export const Colors = ({onColors}) => {
     const [selectedColors, setSelectedColors] =useState([
         {
             id:1,
@@ -41,6 +41,8 @@ export const Colors = () => {
             return color
         })
         setSelectedColors(updateColors)
+        const selectedColorName = updateColors.filter(color => color.completed).map(color => color.name)
+        onColors(selectedColorName)
         
     }
 

@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 
-export const Search = () => {
+export const Search = ({onSearch}) => {
     const [searchValue, setSearchValue] = useState('')
 
     const changeSearch = (e) => {
         setSearchValue(e.target.value)
+        onSearch(e.target.value)
     }
 
     return (
