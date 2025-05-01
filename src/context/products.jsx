@@ -1,25 +1,35 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { getFromLS } from "../utils/function";
+import { PRODUCT_IN_BASKET_KEY, PRODUCT_IN_FAVORITE_KEY } from "../constants/constants";
 
-export const ProductsContext = createContext()
+export const ProductsContext = createContext();
 
 export const useProducts = () => {
-    return useContext(ProductsContext)
-}
+  return useContext(ProductsContext);
+};
 
 export const ProductsProvider = ({ children }) => {
-    const [basketCount, setBasketCount] = useState(() => {
-        const basketItems = JSON.parse(localStorage.getItem('product-in-basket')) || []
-        return basketItems.reduce((acc, item) => acc + (item.quantity), 0)
-    })
-    const [favoriteCount, setFavoriteCount] = useState(() => {
-        const favoriteItems = JSON.parse(localStorage.getItem('product-in-favorite')) || []
-        return favoriteItems.length
-    })
+  const [basketCount, setBasketCount] = useState(0)
+  const [favoriteCount, setFavoriteCount] = useState(0)
 
+  const readBasketCount = () => {
+    const basketItems = getFromLS(PRODUCT_IN_BASKET_KEY) || [];
+    return basketItems.reduce((acc, item) => acc + item.quantity, 0);
+  }
 
-    return (
-        <ProductsContext.Provider value={{ basketCount, favoriteCount, setBasketCount, setFavoriteCount }}>
-            {children}
-        </ProductsContext.Provider>
-    )
-}
+  const readFavoriteCount = () => {
+    const favoriteItems = getFromLS(PRODUCT_IN_FAVORITE_KEY) || [];
+    return favoriteItems.length;
+  }
+  
+  useEffect(() => {
+    setBasketCount(readBasketCount())
+    setFavoriteCount(readFavoriteCount())
+  })
+
+  return (
+    <ProductsContext.Provider value={{ basketCount, favoriteCount, setBasketCount, setFavoriteCount }}>
+      {children}
+    </ProductsContext.Provider>
+  );
+};

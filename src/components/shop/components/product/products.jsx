@@ -1,107 +1,80 @@
-import React, {useEffect, useState} from "react"
-import { useProducts } from "../../../../context/products"
-
-//ключ для избранного:
-const PRODUCT_IN_FAVORITE_KEY = 'product-in-favorite'  
-
-//ключ для корзины:
-const PRODUCT_IN_BASKET_KEY = 'product-in-basket'
-
-const getFromLS = (key) => {
-  try{
-    return JSON.parse(localStorage.getItem(key))
-  }
-  catch (e) {
-    console.log(e)
-    return null
-  }
-}
-
-const setToLS = (key, value) => {
-  try{
-    localStorage.setItem(key, JSON.stringify(value))
-  }
-  catch (e){
-    console.log(e)
-  }
-}
-
+import React, { useEffect, useState } from "react";
+import { useProducts } from "../../../../context/products";
+import { PRODUCT_IN_BASKET_KEY, PRODUCT_IN_FAVORITE_KEY } from "../../../../constants/constants";
+import { getFromLS, setToLS } from "../../../../utils/function";
 
 const Product = ({ product }) => {
-  const [isFavorite, setIsFavorite] = useState(false)  //состояние для избранного
-  const { setBasketCount, setFavoriteCount } = useProducts()
+  const [isFavorite, setIsFavorite] = useState(false); //состояние для избранного
+  const { setBasketCount, setFavoriteCount } = useProducts();
 
   //добавляем в корзину:
   const buyProduct = (product) => {
-    const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY)  
-    if (!productsInBasket) {                                    
-      setToLS(PRODUCT_IN_BASKET_KEY, [{...product, quantity: 1}])
-      setBasketCount(prevCount => prevCount + 1)
-      return true
+    const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY);
+    if (!productsInBasket) {
+      setToLS(PRODUCT_IN_BASKET_KEY, [{ ...product, quantity: 1 }]);
+      setBasketCount((prevCount) => prevCount + 1);
+      return true;
     }
-  
-    let hasProductInBasket = false                       
+
+    let hasProductInBasket = false;
     const updateProducts = productsInBasket.map((productInBasket) => {
-      if (productInBasket.id === product.id) {                
-        hasProductInBasket = true
-  
-        return {                                             
+      if (productInBasket.id === product.id) {
+        hasProductInBasket = true;
+
+        return {
           ...productInBasket,
-          quantity: productInBasket.quantity + 1
-        }
+          quantity: productInBasket.quantity + 1,
+        };
       }
-  
-      return productInBasket
-    })
-  
-    if (hasProductInBasket) {                      
-      setToLS(PRODUCT_IN_BASKET_KEY, updateProducts) 
-      setBasketCount(prevCount => prevCount + 1)
-      return true
+
+      return productInBasket;
+    });
+
+    if (hasProductInBasket) {
+      setToLS(PRODUCT_IN_BASKET_KEY, updateProducts);
+      setBasketCount((prevCount) => prevCount + 1);
+      return true;
     }
-  
-    productsInBasket.push({...product, quantity: 1})  
-    setToLS(PRODUCT_IN_BASKET_KEY, productsInBasket)  
-    setBasketCount(prevCount => prevCount + 1)
-  }
+
+    productsInBasket.push({ ...product, quantity: 1 });
+    setToLS(PRODUCT_IN_BASKET_KEY, productsInBasket);
+    setBasketCount((prevCount) => prevCount + 1);
+  };
 
   //добавляем в избранное:
-const addToFavorites = (product) => {
-  const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY)
-  
-  
-  if (!productsInFavorite) {
-    setToLS(PRODUCT_IN_FAVORITE_KEY, [{...product, quantity: 1}])
-    setFavoriteCount(prevCount => prevCount + 1)
-    return true
-  }
+  const addToFavorites = (product) => {
+    const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY);
 
-  productsInFavorite.push({...product, quantity: 1})
-  setToLS(PRODUCT_IN_FAVORITE_KEY, productsInFavorite)
-  setFavoriteCount(prevCount => prevCount + 1)
-}
+    if (!productsInFavorite) {
+      setToLS(PRODUCT_IN_FAVORITE_KEY, [{ ...product, quantity: 1 }]);
+      setFavoriteCount((prevCount) => prevCount + 1);
+      return true;
+    }
 
-//удаляем из избранного:
-const removeFromFavorites = (product) => {
-  const productsInFavoriteDelete = getFromLS(PRODUCT_IN_FAVORITE_KEY)
+    productsInFavorite.push({ ...product, quantity: 1 });
+    setToLS(PRODUCT_IN_FAVORITE_KEY, productsInFavorite);
+    setFavoriteCount((prevCount) => prevCount + 1);
+  };
 
-  if (!productsInFavoriteDelete) {
-    return false
-  }
+  //удаляем из избранного:
+  const removeFromFavorites = (product) => {
+    const productsInFavoriteDelete = getFromLS(PRODUCT_IN_FAVORITE_KEY);
 
-  const deleteFavorite = productsInFavoriteDelete.filter(item => (item.id !== product.id))
-  setToLS(PRODUCT_IN_FAVORITE_KEY, deleteFavorite)
-  setFavoriteCount(prevCount => prevCount - 1)
-  
-}
+    if (!productsInFavoriteDelete) {
+      return false;
+    }
+
+    const deleteFavorite = productsInFavoriteDelete.filter((item) => item.id !== product.id);
+    setToLS(PRODUCT_IN_FAVORITE_KEY, deleteFavorite);
+    setFavoriteCount((prevCount) => prevCount - 1);
+  };
 
   useEffect(() => {
-    const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY) || [];   
-    setIsFavorite(productsInFavorite.some(item => item.id === product.id));  //обновляем состояние при изменении
-  }, [product.id]); 
-  
-  
- const toggleFavorite = () => {
+    const productsInFavorite = getFromLS(PRODUCT_IN_FAVORITE_KEY) || [];
+    setIsFavorite(productsInFavorite.some((item) => item.id === product.id)); //обновляем состояние при изменении
+  }, [product.id]);
+
+  const toggleFavorite = () => {
     if (isFavorite) {
       removeFromFavorites(product);
     } else {
@@ -109,8 +82,6 @@ const removeFromFavorites = (product) => {
     }
     setIsFavorite(!isFavorite);
   };
-
-  
 
   return (
     <div className="product">
@@ -121,10 +92,7 @@ const removeFromFavorites = (product) => {
             {product.isNew && <div className="label new">New</div>}
           </div>
           <div className="favorites" onClick={toggleFavorite}>
-            <img 
-              src={isFavorite ? './images/iconHeart.svg' : './images/iconFavorites.svg'}
-              alt="Favorite Icon"
-            />
+            <img src={isFavorite ? "./images/iconHeart.svg" : "./images/iconFavorites.svg"} alt="Favorite Icon" />
           </div>
         </div>
         <img src={product.image} className="product-image" alt={product.name} />
@@ -143,5 +111,4 @@ const removeFromFavorites = (product) => {
   );
 };
 
-export default Product
-
+export default Product;

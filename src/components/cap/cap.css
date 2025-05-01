@@ -1,75 +1,75 @@
-.cap{
-    display: flex;
-    gap: 15px;
-    justify-content: space-between;
-    margin-top: 50px;
+.cap {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
-.cap-menu{
-    align-items: center;
-    justify-content: center;
-    max-width: 850px;
-    width: 100%;
-    display: flex;
-    position: relative;
+.cap-menu {
+  align-items: center;
+  justify-content: center;
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  position: relative;
 }
 
-.cap-menu .point{
-    position: absolute;
-    left: 0;
-    top: 32px;
+.cap-menu .point {
+  position: absolute;
+  left: 0;
+  top: 32px;
 }
 
-.menu-items{
-    display: flex;
-    gap: 21px;
-    flex-direction: column;
-    margin-left: -10px;
+.menu-items {
+  display: flex;
+  gap: 21px;
+  flex-direction: column;
+  margin-left: -10px;
 }
 
-.horizontal-line{
-    height: 2px;
-    background: black;
-    width: 850px;
-    position: absolute;
-    left: -60px;
-    bottom: 110px;
+.horizontal-line {
+  height: 2px;
+  background: black;
+  width: 850px;
+  position: absolute;
+  left: -60px;
+  bottom: 110px;
 }
 
-.cap-photo{
-    width: 800px;
-    height: 400px;
-    background: rgba(241, 242, 243, 1);
-    margin-right: 60px;
+.cap-photo {
+  width: 800px;
+  height: 400px;
+  background: rgba(241, 242, 243, 1);
+  margin-right: 60px;
 }
 
-.cap-title{
-    font-family: Josefin Sans;
-    font-size: 80px;
-    font-weight: 400;
-    line-height: 80px;
-    color: rgba(0, 0, 0, 1);
+.cap-title {
+  font-family: Josefin Sans;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 80px;
+  color: rgba(0, 0, 0, 1);
 }
 
-.cap-items{
-    display: flex;
-    gap: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 14px;
-    color: rgba(0, 0, 0, 1);
+.cap-items {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 1);
 }
 
-.cap-item{
-    cursor: pointer;
+.cap-item {
+  cursor: pointer;
 }
 
-.cap-items .vertical-line{
-    width: 2px;
-    background: rgba(0, 0, 0, 1);
+.cap-items .vertical-line {
+  width: 2px;
+  background: rgba(0, 0, 0, 1);
 }
 
 .cap-item.active,
-.cap .cap-menu .menu-items .cap-items .cap-item:hover{
-    color: rgba(255, 142, 142, 1);
+.cap .cap-menu .menu-items .cap-items .cap-item:hover {
+  color: rgba(255, 142, 142, 1);
 }

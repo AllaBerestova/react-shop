@@ -1,62 +1,61 @@
-.container.news{
-    max-width: 1680px;
-    margin: 200px auto 0;
+.container.news {
+  max-width: 1680px;
+  margin: 200px auto 0;
 }
 
-.container .container-newsletter{
-    background: rgba(241, 242, 243, 1);
-    padding: 0 781px 162px 275px;
+.container .container-newsletter {
+  background: rgba(241, 242, 243, 1);
+  padding: 0 781px 162px 275px;
 }
 
-
-.newsletter{
-    max-width: 624px;
-    background: rgba(255, 255, 255, 1); 
-    position: relative;
+.newsletter {
+  max-width: 624px;
+  background: rgba(255, 255, 255, 1);
+  position: relative;
 }
 
-.newsletter .point{
-    position: absolute;
-    top: -30px;
-    right: 30px;
+.newsletter .point {
+  position: absolute;
+  top: -30px;
+  right: 30px;
 }
 
-.newsletter-info{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 60px;
+.newsletter-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 60px;
 }
 
-.newsletter-title{
-    font-family: Josefin Sans;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 38px;
-    color: rgba(0, 0, 0, 1);
+.newsletter-title {
+  font-family: Josefin Sans;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  color: rgba(0, 0, 0, 1);
 }
 
-.newsletter-text{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    color: rgba(68, 68, 68, 1);
+.newsletter-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(68, 68, 68, 1);
 }
 
-.send-email{
-    display: flex;
-    gap: 4px;
-    margin-top: 24px;
+.send-email {
+  display: flex;
+  gap: 4px;
+  margin-top: 24px;
 }
-.send-email .button-wrapper{
-    max-width: 140px;
-    width: 100%;
+.send-email .button-wrapper {
+  max-width: 140px;
+  width: 100%;
 }
- .send-email .button-wrapper .button{
-    padding: 17px 30px;
+.send-email .button-wrapper .button {
+  padding: 17px 30px;
 }
 
-.send-email .input{
-    max-width: 360px;
-    width: 100%;
+.send-email .input {
+  max-width: 360px;
+  width: 100%;
 }
