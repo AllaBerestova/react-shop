@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ProductsProvider } from './context/products';
+import { ProductsProvider } from './context/index';
 import Header from './components/header/header';
 import Cap from './components/cap/cap';
 import Shop from './components/shop/shop';

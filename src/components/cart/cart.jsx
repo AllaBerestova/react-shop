@@ -3,8 +3,8 @@ import "./cart.css";
 import { ProductCart } from "./components/productCart";
 import { Order } from "./components/order";
 import { Promocode } from "./components/promocode";
-import { currentPromocode, PRODUCT_IN_BASKET_KEY } from "../../constants/constants";
-import { getFromLS } from "../../utils/function";
+import { currentPromocode, PRODUCT_IN_BASKET_KEY } from "../../constants/index";
+import { getFromLS } from "../../utils/index";
 
 const Cart = () => {
 

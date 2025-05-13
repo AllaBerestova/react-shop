@@ -1,7 +1,7 @@
 import React from "react";
-import { useProducts } from "../../../context/products";
-import { PRODUCT_IN_BASKET_KEY } from "../../../constants/constants";
-import { setToLS } from "../../../utils/function";
+import { useProducts } from "../../../context/index";
+import { PRODUCT_IN_BASKET_KEY } from "../../../constants/index";
+import { setToLS } from "../../../utils/index";
 
 export const ProductCart = ({ productsCart, setProductsCart }) => {
   const { setBasketCount } = useProducts();

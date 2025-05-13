@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getFromLS } from "../utils/function";
-import { PRODUCT_IN_BASKET_KEY, PRODUCT_IN_FAVORITE_KEY } from "../constants/constants";
+import { getFromLS } from "../utils/index";
+import { PRODUCT_IN_BASKET_KEY, PRODUCT_IN_FAVORITE_KEY } from "../constants/index";
 
 export const ProductsContext = createContext();
 
@@ -25,7 +25,7 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     setBasketCount(readBasketCount())
     setFavoriteCount(readFavoriteCount())
-  })
+  },[])
 
   return (
     <ProductsContext.Provider value={{ basketCount, favoriteCount, setBasketCount, setFavoriteCount }}>

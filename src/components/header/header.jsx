@@ -1,5 +1,5 @@
 import React from "react";
-import { useProducts } from "../../context/products";
+import { useProducts } from "../../context/index";
 import "./header.css";
 import "../commons.css";
 
