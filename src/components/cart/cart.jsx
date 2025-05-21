@@ -4,10 +4,10 @@ import { ProductCart } from "./components/productCart";
 import { Order } from "./components/order";
 import { Promocode } from "./components/promocode";
 import { currentPromocode, PRODUCT_IN_BASKET_KEY } from "../../constants/index";
-import { getFromLS } from "../../utils/index";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Cart = () => {
-
+  const {getFromLS} = useLocalStorage();
   const [productsCart, setProductsCart] = useState(getFromLS(PRODUCT_IN_BASKET_KEY));
   const [discount, setDiscount] = useState(0);
 

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getFromLS } from "../utils/index";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { PRODUCT_IN_BASKET_KEY, PRODUCT_IN_FAVORITE_KEY } from "../constants/index";
 
 export const ProductsContext = createContext();
@@ -11,6 +11,7 @@ export const useProducts = () => {
 export const ProductsProvider = ({ children }) => {
   const [basketCount, setBasketCount] = useState(0)
   const [favoriteCount, setFavoriteCount] = useState(0)
+  const {getFromLS} = useLocalStorage()
 
   const readBasketCount = () => {
     const basketItems = getFromLS(PRODUCT_IN_BASKET_KEY) || [];

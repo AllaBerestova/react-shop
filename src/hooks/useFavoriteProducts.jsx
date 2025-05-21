@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useProducts } from "../context";
 import { PRODUCT_IN_FAVORITE_KEY } from "../constants";
-import { getFromLS, setToLS } from "../utils";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useFavoriteProducts = (product) => {
   const { setFavoriteCount } = useProducts();
+  const {getFromLS, setToLS} = useLocalStorage();
   const [isFavorite, setIsFavorite] = useState(false);
 
   const addToFavorites = (product) => {

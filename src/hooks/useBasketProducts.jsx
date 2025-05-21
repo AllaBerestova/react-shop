@@ -1,9 +1,10 @@
 import { useProducts } from "../context";
 import { PRODUCT_IN_BASKET_KEY } from "../constants";
-import { getFromLS, setToLS } from "../utils";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useBasketProducts = () => {
   const { setBasketCount } = useProducts();
+  const {getFromLS, setToLS} = useLocalStorage();
   const buyProduct = (product) => {
     const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY);
     if (!productsInBasket) {
